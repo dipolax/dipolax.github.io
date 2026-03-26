@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura Neural | Premium AI Real Estate Solutions</title>
+    <title>Aura Neural | Luxury AI Agents for Real Estate</title>
     
-    <meta name="description" content="Autonomous AI agents for high-performing Realtors.">
+    <meta name="description" content="Autonomous AI agents designed specifically for high-performing Realtors and Brokerages.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-
-        .bg-glow { background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #05070a 100%); }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .gradient-text { background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* DEV NOTE: This ensures the video covers the entire header background */
-        .video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
-        .video-container video { min-width: 100%; min-height: 100%; object-fit: cover; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #05070a; }
+
+        /* DEV NOTE: This creates the "Glass" effect for cards and navigation */
+        .glass { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+        }
+
+        .gradient-text { 
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        /* DEV NOTE: Smooth hover lift for pricing and feature cards */
+        .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card-hover:hover { transform: translateY(-10px); border-color: rgba(129, 140, 248, 0.4); }
     </style>
 </head>
-<body class="bg-[#05070a] text-slate-300 bg-glow">
+<body class="text-slate-300 overflow-x-hidden">
 
     <nav class="fixed w-full z-50 glass py-5 px-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -32,60 +42,137 @@
                 Aura<span class="text-indigo-400">Neural</span>
             </div>
             <div class="hidden md:flex space-x-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                <a href="#demo" class="hover:text-white transition">The Agent</a>
+                <a href="#features" class="hover:text-white transition">Capabilities</a>
                 <a href="#pricing" class="hover:text-white transition">Pricing</a>
             </div>
-            <a href="#pricing" class="bg-indigo-600 text-white px-7 py-2.5 rounded-full text-xs font-bold uppercase hover:bg-indigo-500 transition shadow-lg">
-                Book a Demo
+            <a href="#pricing" class="bg-indigo-600 text-white px-7 py-2.5 rounded-full text-xs font-bold uppercase hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20">
+                Get Started
             </a>
         </div>
     </nav>
 
-    <header class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="video-container">
-            <video autoplay loop muted playsinline poster="https://via.placeholder.com/1920x1080">
-                <source src="your-video-file.mp4" type="video/mp4">
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        
+        <div class="absolute inset-0 z-0">
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                class="w-full h-full object-cover brightness-[0.5]">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-house-with-a-swimming-pool-and-large-windows-34195-large.mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#05070a]"></div>
         </div>
 
-        <div class="relative z-10 text-center px-6 animate__animated animate__fadeIn">
+        <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-transparent to-[#05070a]"></div>
+
+        <div class="relative z-20 text-center px-6 animate__animated animate__fadeInUp">
             <span class="inline-block px-4 py-1.5 glass rounded-full text-indigo-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
-                Autonomous Intelligence
+                Autonomous Intelligence for Realtors
             </span>
             <h1 class="text-6xl md:text-9xl font-extrabold text-white mb-8 leading-[0.9] tracking-tighter">
-                The Future of <br><span class="gradient-text italic">Real Estate.</span>
+                Scale your brokerage <br><span class="gradient-text italic">on autopilot.</span>
             </h1>
-            <div class="flex flex-col sm:flex-row justify-center gap-6 mt-12">
-                <a href="#pricing" class="bg-white text-black px-12 py-5 rounded-2xl font-bold text-lg hover:bg-indigo-500 hover:text-white transition-all">
+            <p class="text-lg md:text-xl text-slate-200 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-2xl">
+                Aura Neural deploys elite AI agents that manage your leads, sync with MLS data, and book showings while you focus on closings.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#pricing" class="bg-indigo-600 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-indigo-500 transition-all shadow-2xl shadow-indigo-600/40">
                     Deploy Agent
                 </a>
-                <a href="#demo" class="glass px-12 py-5 rounded-2xl text-white font-bold text-lg hover:bg-white/10 transition">
-                    View Showcase
+                <a href="#features" class="glass px-12 py-5 rounded-2xl text-white font-bold text-lg hover:bg-white/10 transition">
+                    Explore Features
                 </a>
             </div>
         </div>
     </header>
 
-    <section id="demo" class="py-32 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-extrabold text-white mb-4">See Aura In Action</h2>
-                <p class="text-slate-500">Watch how our agent handles a lead from initial inquiry to booking.</p>
-            </div>
-            
-            <div class="glass p-4 rounded-[3rem] shadow-2xl shadow-indigo-500/10">
-                <div class="relative rounded-[2rem] overflow-hidden aspect-video bg-black">
-                    <video controls class="w-full h-full">
-                        <source src="your-demo-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+    <section id="features" class="py-32 px-6 bg-[#05070a]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 glass p-12 rounded-[3rem] relative overflow-hidden group card-hover">
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-bold text-white mb-4">MLS Real-Time Sync</h3>
+                        <p class="text-slate-400 max-w-md">Your agent has instant access to every property detail, school district, and tax history in your region.</p>
+                    </div>
+                    <div class="absolute -right-10 -bottom-10 opacity-5 group-hover:opacity-10 transition">
+                        <i class="fas fa-home text-[15rem] text-indigo-500"></i>
+                    </div>
+                </div>
+                <div class="glass p-12 rounded-[3rem] flex flex-col justify-end card-hover">
+                    <i class="fas fa-calendar-alt text-indigo-500 text-4xl mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Instant Showings</h3>
+                    <p class="text-slate-500 text-sm">Integrates with your calendar to book property tours automatically.</p>
+                </div>
+                <div class="glass p-12 rounded-[3rem] flex flex-col justify-end card-hover">
+                    <i class="fas fa-filter text-purple-500 text-4xl mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Lead Scoring</h3>
+                    <p class="text-slate-500 text-sm">Qualifies buyers by budget and timeline before they ever hit your inbox.</p>
+                </div>
+                <div class="md:col-span-2 glass p-12 rounded-[3rem] card-hover">
+                    <h3 class="text-3xl font-bold text-white mb-4">Omni-Channel Presence</h3>
+                    <p class="text-slate-400 max-w-md">Deploy your agent on your Website, SMS, and WhatsApp to capture leads wherever they are.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    ...
+    <section id="pricing" class="py-32 px-6 bg-[#05070a]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-extrabold text-white mb-6">Simple Agent Pricing</h2>
+                <p class="text-slate-500">Professional intelligence. No hidden management fees.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="glass p-12 rounded-[2.5rem] card-hover">
+                    <h3 class="text-slate-400 font-bold uppercase tracking-widest text-xs mb-6">Starter</h3>
+                    <div class="text-5xl font-extrabold text-white mb-8">$0<span class="text-lg text-slate-600 font-normal">/mo</span></div>
+                    <ul class="space-y-5 mb-10 text-sm">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-500"></i> 1 Active Agent</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-500"></i> Web-Only Chat</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl border border-white/10 font-bold hover:bg-white/5 transition">Get Started</button>
+                </div>
+
+                <div class="glass p-12 rounded-[2.5rem] card-hover border-indigo-500/50 bg-indigo-500/5 scale-110 relative z-10">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-indigo-500 text-white text-[10px] font-bold px-6 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Recommended</div>
+                    <h3 class="text-indigo-400 font-bold uppercase tracking-widest text-xs mb-6">Pro Realtor</h3>
+                    <div class="text-5xl font-extrabold text-white mb-8">$49<span class="text-lg text-slate-600 font-normal">/mo</span></div>
+                    <ul class="space-y-5 mb-10 text-sm text-slate-200">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-500"></i> 5 Active Agents</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-500"></i> SMS & WhatsApp Sync</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-500"></i> Full MLS Data Access</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/REPLACE_ME" class="block w-full text-center py-4 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-500 transition shadow-xl shadow-indigo-600/20">Upgrade to Pro</a>
+                </div>
+
+                <div class="glass p-12 rounded-[2.5rem] card-hover">
+                    <h3 class="text-slate-400 font-bold uppercase tracking-widest text-xs mb-6">Brokerage</h3>
+                    <div class="text-5xl font-extrabold text-white mb-8">Custom</div>
+                    <ul class="space-y-5 mb-10 text-sm">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-500"></i> Unlimited Agent Units</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-indigo-500"></i> CRM Deep Integration</li>
+                    </ul>
+                    <a href="mailto:sales@auraneural.com" class="block w-full text-center py-4 rounded-2xl border border-white/10 font-bold hover:bg-white/5 transition">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 bg-black/40">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-8 md:mb-0">
+                <div class="text-xl font-black text-white uppercase mb-2 tracking-tighter">AuraNeural</div>
+                <p class="text-slate-600 text-xs tracking-widest uppercase">© 2026 Aura Neural Inc.</p>
+            </div>
+            <div class="flex space-x-12 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                <a href="#" class="hover:text-white transition">Privacy</a>
+                <a href="#" class="hover:text-white transition">Terms</a>
+                <a href="#" class="hover:text-white transition">Docs</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
