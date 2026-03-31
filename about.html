@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Flux Automation - The Future of Real Estate AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #020617; 
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .bg-galactic {
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #020617 100%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* FUTURISTIC GLOW ICON */
+        .glow-icon {
+            position: relative;
+            transition: all 0.5s ease;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+        }
+        .glow-icon:hover {
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+            transform: scale(1.1) rotate(5deg);
+            border-color: #3b82f6;
+        }
+
+        .neon-border {
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-animate {
+            position: relative;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .btn-animate::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.6s;
+        }
+        .btn-animate:hover::before { left: 100%; }
+
+        /* Mobile Menu */
+        #mobile-menu { transition: 0.3s; transform: translateY(-100%); opacity: 0; }
+        #mobile-menu.active { transform: translateY(0); opacity: 1; }
+    </style>
+</head>
+<body class="bg-galactic min-h-screen">
+
+    <nav class="fixed w-full z-[100] py-5 px-6 md:px-10 border-b border-white/5 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <i class="fas fa-bolt text-white"></i>
+                </div>
+                <span class="text-xl md:text-2xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Automation</span></span>
+            </a>
+            <div class="hidden md:flex space-x-12 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
+                <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
+                <a href="pricing.html" class="hover:text-white transition">Pricing</a>
+                <a href="about.html" class="text-white border-b border-blue-500 pb-1">Vision</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="connect.html" class="hidden sm:block btn-animate text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest">Connect Leads</a>
+                <button onclick="toggleMenu()" class="md:hidden text-white text-xl"><i class="fas fa-bars" id="menu-icon"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex flex-col p-8 space-y-6 md:hidden">
+            <a href="how-it-works.html" class="text-sm font-bold tracking-widest text-slate-400">Magic</a>
+            <a href="pricing.html" class="text-sm font-bold tracking-widest text-slate-400">Pricing</a>
+            <a href="about.html" class="text-sm font-bold tracking-widest text-white">Vision</a>
+            <a href="connect.html" class="btn-animate text-center py-4 rounded-xl text-white font-bold text-xs tracking-widest">Connect Leads</a>
+        </div>
+    </nav>
+
+    <header class="pt-56 pb-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto animate__animated animate__fadeIn">
+            <h1 class="text-5xl md:text-8xl font-extrabold text-white mb-8 tracking-tighter leading-tight">Our Mission: <br><span class="text-blue-400 italic">Zero Lead Lag.</span></h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                We believe realtors should spend their time at the closing table, not stuck in their inbox. Flux Automation is the bridge between a lead's intent and an agent's success.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+            <div class="glass p-12 rounded-[3.5rem] neon-border group text-center">
+                <div class="w-20 h-20 bg-blue-600/10 border border-blue-500/30 rounded-3xl flex items-center justify-center mx-auto mb-8 glow-icon">
+                    <i class="fas fa-brain text-blue-400 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Flux Vision AI</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">We provide proprietary AI automation that reads and interprets incoming leads from Zillow, Redfin, and Realtor.com with 99.8% accuracy.</p>
+            </div>
+            <div class="glass p-12 rounded-[3.5rem] neon-border group text-center">
+                <div class="w-20 h-20 bg-blue-600/10 border border-blue-500/30 rounded-3xl flex items-center justify-center mx-auto mb-8 glow-icon">
+                    <i class="fas fa-sync text-blue-400 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Seamless Routing</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">By integrating directly with your agent's Gmail, we instantly route high-intent leads to your mobile device via SMS, bypassing traditional CRM delays.</p>
+            </div>
+            <div class="glass p-12 rounded-[3.5rem] neon-border group text-center">
+                <div class="w-20 h-20 bg-blue-600/10 border border-blue-500/30 rounded-3xl flex items-center justify-center mx-auto mb-8 glow-icon">
+                    <i class="fas fa-chart-line text-blue-400 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Brokerage Scaling</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">Designed for both solo agents and teams, our enterprise-grade architecture handles thousands of leads per second without interruption.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6">
+        <div class="max-w-4xl mx-auto glass p-10 md:p-20 rounded-[4rem] border-white/5 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl"></div>
+            
+            <h2 class="text-3xl font-bold mb-10 tracking-tight"><i class="fas fa-shield-check text-blue-400 mr-4"></i>Business Intelligence</h2>
+            
+            <div class="space-y-12">
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 mb-4">Service Description</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Flux Automation is a Software-as-a-Service (SaaS) provider specializing in automated lead triage for real estate professionals. Our service allows users to connect their business email to our "Flux Vision" engine, which identifies lead notification emails from major platforms (Zillow, Redfin, Realtor.com), extracts key prospect data, and sends immediate SMS alerts to the subscriber. 
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 mb-4">Fulfillment Policy</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Upon successful payment or trial activation, service is provisioned instantly. Users gain immediate access to the Flux Dashboard and API integrations.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 mb-4">Cancellation & Refunds</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Subscriptions can be cancelled at any time via the user dashboard. As we offer a 7-Day Free Trial, refunds for the current billing cycle are generally not provided unless required by law.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-10 border-t border-white/5">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                        <div class="text-center md:text-left">
+                            <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">Customer Support</h4>
+                            <p class="text-white font-bold">support@fluxautomation.site</p>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">Business Address</h4>
+                            <p class="text-slate-400 text-xs">[Insert Your Street Address], New Jersey, USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 bg-black/20">
+        <div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div>
+                <div class="text-xl font-black text-white uppercase italic tracking-tighter">Flux<span class="text-blue-500">Automation</span></div>
+                <p class="text-[10px] text-slate-600 font-bold uppercase tracking-widest mt-2">© 2026 Flux Automation Inc.</p>
+            </div>
+            <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
+                <a href="mailto:support@fluxautomation.site" class="hover:text-white transition">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('active');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        }
+    </script>
+</body>
+</html>
