@@ -62,7 +62,7 @@
 
         /* Mobile Menu */
         #mobile-menu { transition: 0.3s; transform: translateY(-100%); opacity: 0; }
-        #mobile-menu.active { transform: translateY(0); opacity: 1; }
+        #mobile-menu.active { transform: translateY(0); opacity: 1; display: flex; }
     </style>
 </head>
 <body class="bg-galactic min-h-screen">
@@ -78,17 +78,19 @@
             <div class="hidden md:flex space-x-12 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
                 <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
                 <a href="pricing.html" class="hover:text-white transition">Pricing</a>
-                <a href="about.html" class="text-white border-b border-blue-500 pb-1">Vision</a>
+                <a href="about.html" class="text-white border-b border-blue-500 pb-1">About</a>
+                <a href="privacy.html" class="hover:text-white transition">Privacy</a>
             </div>
             <div class="flex items-center gap-4">
                 <a href="connect.html" class="hidden sm:block btn-animate text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest">Connect Leads</a>
                 <button onclick="toggleMenu()" class="md:hidden text-white text-xl"><i class="fas fa-bars" id="menu-icon"></i></button>
             </div>
         </div>
-        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex flex-col p-8 space-y-6 md:hidden">
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex-col p-8 space-y-6 md:hidden hidden">
             <a href="how-it-works.html" class="text-sm font-bold tracking-widest text-slate-400">Magic</a>
             <a href="pricing.html" class="text-sm font-bold tracking-widest text-slate-400">Pricing</a>
-            <a href="about.html" class="text-sm font-bold tracking-widest text-white">Vision</a>
+            <a href="about.html" class="text-sm font-bold tracking-widest text-white">About</a>
+            <a href="privacy.html" class="text-sm font-bold tracking-widest text-slate-400">Privacy</a>
             <a href="connect.html" class="btn-animate text-center py-4 rounded-xl text-white font-bold text-xs tracking-widest">Connect Leads</a>
         </div>
     </nav>
@@ -161,7 +163,7 @@
                     <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                         <div class="text-center md:text-left">
                             <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">Customer Support</h4>
-                            <p class="text-white font-bold">support@fluxautomation.site</p>
+                            <p class="text-white font-bold"><a href="mailto:aiagentcustomersupport@gmail.com" class="hover:text-blue-400 transition">aiagentcustomersupport@gmail.com</a></p>
                         </div>
                         <div class="text-center md:text-left">
                             <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">Business Address</h4>
@@ -182,7 +184,7 @@
             <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
                 <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
                 <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
-                <a href="mailto:support@fluxautomation.site" class="hover:text-white transition">Support</a>
+                <a href="mailto:aiagentcustomersupport@gmail.com" class="hover:text-white transition">Support</a>
             </div>
         </div>
     </footer>
