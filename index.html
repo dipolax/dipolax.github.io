@@ -4,181 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flux Automation | Zero-Friction AI for Real Estate</title>
-    
-    <meta name="description" content="Flux Automation handles your Zillow, Realtor.com, and Redfin leads instantly using Flux Vision AI.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        
-        :root {
-            --cobalt-deep: #020617;
-            --cobalt-mid: #0f172a;
-            --accent-blue: #38bdf8;
-            --accent-indigo: #6366f1;
-        }
-
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--cobalt-deep); color: #f8fafc; }
-
-        /* THE MILLION DOLLAR GLOW */
-        .hero-glow {
-            background: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15) 0%, rgba(2, 6, 23, 1) 70%);
-        }
-
-        .glass { 
-            background: rgba(255, 255, 255, 0.02); 
-            backdrop-filter: blur(16px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-        }
-
-        .gradient-border {
-            border: 1px solid;
-            border-image: linear-gradient(to right, #6366f1, #38bdf8) 1;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-            box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.5);
-        }
-
-        /* CUSTOM UTILITY: Login Modal Hidden by default */
-        #loginModal { display: none; }
-        #loginModal.active { display: flex; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; }
+        .bg-glow { background: radial-gradient(circle at 50% 0%, #1e293b 0%, #020617 100%); }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .neon-text { background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-glow { box-shadow: 0 0 20px rgba(96, 165, 250, 0.3); transition: 0.3s ease; }
+        .btn-glow:hover { box-shadow: 0 0 30px rgba(96, 165, 250, 0.5); transform: translateY(-2px); }
     </style>
 </head>
-<body class="hero-glow">
-
-    <nav class="fixed w-full z-50 glass py-4 px-8 border-b border-white/5">
+<body class="bg-glow min-h-screen">
+    <nav class="fixed w-full z-50 glass py-5 px-8 border-b border-white/5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                    <i class="fas fa-bolt text-white"></i>
-                </div>
-                <span class="text-2xl font-black tracking-tighter uppercase italic">Flux<span class="text-indigo-500">Automation</span></span>
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center"><i class="fas fa-bolt text-white"></i></div>
+                <span class="text-2xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Automation</span></span>
             </div>
-            
-            <div class="hidden md:flex space-x-8 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                <a href="how-it-works.html" class="hover:text-white transition">How it Works</a>
-                <a href="#pricing" class="hover:text-white transition">Pricing</a>
-                <a href="about.html" class="hover:text-white transition">About</a>
+            <div class="hidden md:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400">
+                <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
+                <a href="pricing.html" class="hover:text-white transition">Pricing</a>
+                <a href="about.html" class="hover:text-white transition">Vision</a>
             </div>
-
-            <div class="flex items-center gap-4">
-                <button onclick="toggleModal('loginModal')" class="text-xs font-bold uppercase tracking-widest hover:text-indigo-400 transition">Login</button>
-                <a href="connect.html" class="btn-primary text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase hover:scale-105 transition">
-                    Connect Leads
-                </a>
+            <div class="flex items-center gap-6">
+                <button onclick="document.getElementById('loginModal').style.display='flex'" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-white">Log In</button>
+                <a href="connect.html" class="bg-blue-600 text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest btn-glow">Connect Leads</a>
             </div>
         </div>
     </nav>
 
-    <header class="pt-56 pb-32 px-6">
-        <div class="max-w-5xl mx-auto text-center">
-            <div class="animate__animated animate__fadeInDown">
-                <span class="glass px-4 py-1.5 rounded-full text-indigo-400 text-[10px] font-bold uppercase tracking-[0.4em] mb-8 inline-block">
-                    Verified Zillow & Redfin Partner Tech
-                </span>
-                <h1 class="text-6xl md:text-8xl font-extrabold text-white mb-8 tracking-tighter leading-none">
-                    Real Estate Leads, <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-sky-400">Handled by AI.</span>
-                </h1>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-                    Zero setup required. Flux Vision AI automatically monitors your Zillow, Realtor.com, and Redfin leads 24/7. Never miss a closing again.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-6">
-                    <a href="connect.html" class="btn-primary px-12 py-5 rounded-2xl text-white font-bold text-lg hover:shadow-indigo-500/40 transition">
-                        Connect Your Leads
-                    </a>
-                    <a href="how-it-works.html" class="glass px-12 py-5 rounded-2xl text-white font-bold text-lg hover:bg-white/5 transition">
-                        See The Magic
-                    </a>
-                </div>
+    <header class="pt-64 pb-32 px-6 text-center">
+        <div class="max-w-5xl mx-auto animate__animated animate__fadeIn">
+            <span class="inline-block px-5 py-2 glass rounded-full text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em] mb-10">Autonomous Intelligence for Brokerages</span>
+            <h1 class="text-6xl md:text-9xl font-extrabold text-white mb-10 leading-none tracking-tighter">
+                Real Estate Leads, <br><span class="neon-text">Handled by AI.</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-16 leading-relaxed">
+                Flux Automation integrates with **Zillow, Realtor.com, and Redfin** automatically. No more manual entry. No more lead lag. Just closings.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-8">
+                <a href="connect.html" class="bg-white text-black px-14 py-6 rounded-2xl font-bold text-xl hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-2xl">Connect Your Leads</a>
+                <a href="how-it-works.html" class="glass px-14 py-6 rounded-2xl text-white font-bold text-xl hover:bg-white/10 transition">See The Magic</a>
             </div>
         </div>
     </header>
 
-    <section id="features" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
-            <div class="md:col-span-2 glass p-12 rounded-[3rem] border-indigo-500/20">
-                <h3 class="text-3xl font-bold text-white mb-4">Flux Vision AI</h3>
-                <p class="text-slate-400">Our proprietary model doesn't just "read" emails. It understands buyer intent, urgency, and property specificities to generate human-grade responses instantly.</p>
-                <div class="mt-8 flex gap-4 opacity-50">
-                    <img src="https://logo.clearbit.com/zillow.com" class="h-6 grayscale">
-                    <img src="https://logo.clearbit.com/realtor.com" class="h-6 grayscale">
-                    <img src="https://logo.clearbit.com/redfin.com" class="h-6 grayscale">
-                </div>
-            </div>
-            <div class="glass p-12 rounded-[3rem] bg-indigo-600/5">
-                <i class="fas fa-bolt text-indigo-400 text-3xl mb-6"></i>
-                <h3 class="text-xl font-bold text-white mb-2">Instant Route</h3>
-                <p class="text-slate-500 text-sm">Leads are routed from your Gmail to your phone in < 2 seconds.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-5xl font-black text-white mb-16 italic">Scale Your Business.</h2>
-            <div class="grid md:grid-cols-3 gap-8 text-left">
-                <div class="md:col-start-2 glass p-12 rounded-[3.5rem] border-indigo-500/50 bg-indigo-600/5 scale-110 relative shadow-2xl">
-                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-indigo-500 text-white text-[10px] font-bold px-6 py-2 rounded-full uppercase tracking-widest">Recommended</div>
-                    <h3 class="text-white text-2xl font-bold mb-2">Unlimited Flux</h3>
-                    <div class="text-5xl font-black text-white mb-8">$99<span class="text-lg text-slate-500 font-normal">/mo</span></div>
-                    <ul class="space-y-4 mb-12 text-sm text-slate-300">
-                        <li><i class="fas fa-check text-indigo-400 mr-2"></i> Unlimited Zillow/Redfin Leads</li>
-                        <li><i class="fas fa-check text-indigo-400 mr-2"></i> Custom Flux Vision Persona</li>
-                        <li><i class="fas fa-check text-indigo-400 mr-2"></i> Direct SMS & WhatsApp Alerts</li>
-                        <li><i class="fas fa-check text-indigo-400 mr-2"></i> CRM Auto-Sync</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/your_live_link" class="btn-primary block text-center py-5 rounded-2xl font-bold text-white uppercase tracking-widest text-xs">
-                        Start 7-Day Free Trial
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="loginModal" class="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-6 backdrop-blur-xl">
-        <div class="glass w-full max-w-md p-12 rounded-[3rem] border-white/10 relative">
-            <button onclick="toggleModal('loginModal')" class="absolute top-8 right-8 text-slate-500 hover:text-white"><i class="fas fa-times"></i></button>
-            <h2 class="text-3xl font-bold text-white mb-2">Welcome Back</h2>
-            <p class="text-slate-500 text-sm mb-10">Access your Flux Vision dashboard.</p>
-            
-            <div class="space-y-6">
-                <input type="email" id="userEmail" placeholder="Email Address" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-white outline-none focus:border-indigo-500 transition">
-                <input type="password" id="userPass" placeholder="Password" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-white outline-none focus:border-indigo-500 transition">
-                <button onclick="handleLogin()" class="btn-primary w-full py-4 rounded-2xl font-bold text-white">Sign In</button>
-            </div>
-            <p class="text-center text-xs text-slate-600 mt-8">Don't have an account? <a href="connect.html" class="text-indigo-400">Connect Leads</a></p>
+    <div class="max-w-7xl mx-auto px-6 py-20 border-y border-white/5 opacity-30 text-center">
+        <p class="text-[10px] font-bold uppercase tracking-[0.5em] mb-12">Seamlessly Integrating With</p>
+        <div class="flex flex-wrap justify-center gap-20 grayscale brightness-200">
+            <span class="text-2xl font-black italic">ZILLOW</span>
+            <span class="text-2xl font-black italic">REALTOR.COM</span>
+            <span class="text-2xl font-black italic">REDFIN</span>
+            <span class="text-2xl font-black italic">GMAIL</span>
         </div>
     </div>
 
-    <footer class="py-20 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 text-slate-600 text-[10px] font-bold uppercase tracking-widest">
-            <div class="text-white text-lg font-black italic">FLUX</div>
-            <div class="flex gap-10">
-                <a href="privacy.html" class="hover:text-white">Privacy Policy</a>
-                <a href="terms.html" class="hover:text-white">Terms</a>
-                <a href="mailto:support@fluxautomation.site" class="hover:text-white">Support</a>
+    <div id="loginModal" class="fixed inset-0 z-[100] bg-black/95 items-center justify-center p-6 hidden backdrop-blur-2xl">
+        <div class="glass w-full max-w-md p-16 rounded-[3.5rem] border-white/10 relative">
+            <button onclick="this.parentElement.parentElement.style.display='none'" class="absolute top-10 right-10 text-slate-500 hover:text-white"><i class="fas fa-times"></i></button>
+            <h2 class="text-3xl font-bold text-white mb-8 tracking-tight">Agent Login</h2>
+            <div class="space-y-6">
+                <input type="email" id="authEmail" placeholder="Work Email" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-blue-500 transition">
+                <input type="password" id="authPass" placeholder="Secure Key" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-blue-500 transition">
+                <button onclick="handleLogin()" class="w-full bg-blue-600 py-5 rounded-2xl font-bold text-white text-lg btn-glow mt-4">Enter Dashboard</button>
             </div>
-            <div>© 2026 Flux Automation Inc.</div>
+            <p class="text-center text-[10px] font-bold text-slate-600 mt-10 uppercase tracking-widest">Powered by Flux Vision AI</p>
         </div>
-    </footer>
+    </div>
 
     <script>
-        function toggleModal(id) {
-            document.getElementById(id).classList.toggle('active');
-        }
-
-        // DEV NOTE: Integrate your Auth API here
         async function handleLogin() {
-            const email = document.getElementById('userEmail').value;
-            const pass = document.getElementById('userPass').value;
-            console.log("Authenticating:", email);
-            // Example: fetch('https://api.fluxautomation.site/login', { ... })
-            alert("Login integration ready. Connect your backend to handle " + email);
+            const email = document.getElementById('authEmail').value;
+            // DEV NOTE: fetch('https://connect.fluxautomation.site:8080/login', { ... })
+            alert("Backend Bridge Active. Authenticating: " + email);
         }
     </script>
 </body>
