@@ -4,42 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Flux Automation - Secure Intelligence</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; }
-        .bg-galactic { background: radial-gradient(circle at 50% 0%, #111827 0%, #020617 100%); }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glow-border { border: 1px solid rgba(59, 130, 246, 0.3); box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
-        .neon-text { background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #020617; 
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .bg-galactic {
+            background: radial-gradient(circle at 50% 0%, #111827 0%, #020617 100%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glow-border {
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Mobile Menu Transitions */
+        #mobile-menu { 
+            transition: all 0.3s ease-in-out; 
+            transform: translateY(-100%); 
+            opacity: 0; 
+        }
+        #mobile-menu.active { 
+            transform: translateY(0); 
+            opacity: 1; 
+            display: flex; 
+        }
+
+        .btn-animate {
+            position: relative;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .btn-animate::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.6s;
+        }
+        .btn-animate:hover::before { left: 100%; }
     </style>
 </head>
 <body class="bg-galactic min-h-screen">
 
-    <nav class="py-8 px-10 border-b border-white/5 backdrop-blur-xl">
+    <nav class="fixed w-full z-[100] py-5 px-6 md:px-10 border-b border-white/5 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
                     <i class="fas fa-bolt text-white"></i>
                 </div>
-                <span class="text-xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Automation</span></span>
+                <span class="text-xl md:text-2xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Automation</span></span>
             </a>
+            
+            <div class="hidden lg:flex space-x-12 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
+                <a href="pricing.html" class="hover:text-white transition">Pricing</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="privacy.html" class="text-white border-b border-blue-500 pb-1">Privacy</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="connect.html" class="hidden sm:block btn-animate text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-blue-600/20">Connect Leads</a>
+                <button onclick="toggleMenu()" class="lg:hidden text-white text-xl p-2">
+                    <i class="fas fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex-col p-8 space-y-6 lg:hidden hidden">
+            <a href="index.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Home</a>
+            <a href="how-it-works.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Magic</a>
+            <a href="pricing.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Pricing</a>
+            <a href="about.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">About</a>
+            <a href="privacy.html" class="text-sm font-bold uppercase tracking-widest text-white">Privacy</a>
+            <a href="connect.html" class="btn-animate text-center py-4 rounded-xl text-white font-bold text-xs tracking-widest">Connect Leads</a>
         </div>
     </nav>
 
-    <main class="pt-20 pb-32 px-6">
+    <main class="pt-48 pb-32 px-6">
         <div class="max-w-4xl mx-auto">
             
-            <div class="glass p-12 rounded-[3rem] glow-border mb-12 animate__animated animate__fadeIn">
+            <div class="glass p-8 md:p-12 rounded-[3rem] glow-border mb-12 animate__animated animate__fadeIn">
                 <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6">
                     <i class="fas fa-user-shield text-blue-400 text-2xl"></i>
                 </div>
-                <h1 class="text-4xl font-extrabold mb-6 tracking-tight">Privacy & Data Governance</h1>
-                <p class="text-slate-400 leading-relaxed mb-8">Effective Date: March 31, 2026. Based in New Jersey, USA.</p>
+                <h1 class="text-3xl md:text-4xl font-extrabold mb-6 tracking-tight leading-tight">Privacy & Data Governance</h1>
+                <p class="text-slate-400 leading-relaxed mb-8 text-sm">Effective Date: March 31, 2026. Based in New Jersey, USA.</p>
                 
                 <div class="bg-blue-600/5 border-l-4 border-blue-500 p-6 rounded-r-2xl">
-                    <h3 class="text-white font-bold text-sm uppercase tracking-widest mb-3">Google API Limited Use Disclosure</h3>
+                    <h3 class="text-white font-bold text-sm uppercase tracking-widest mb-3 italic">Google API Limited Use Disclosure</h3>
                     <p class="text-sm text-slate-300 leading-relaxed italic">
                         "Flux Automation's use and transfer of information received from Google APIs to any other app will adhere to 
                         <a href="https://developers.google.com/terms/api-services-user-data-policy#limited-use" class="text-blue-400 underline">Google API Services User Data Policy</a>, 
@@ -51,56 +123,81 @@
             <div class="space-y-12 px-4">
                 <section>
                     <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-database text-blue-500"></i> Data We Collect
+                        <i class="fas fa-database text-blue-500 text-sm"></i> Data Collection Scope
                     </h2>
                     <p class="text-slate-400 text-sm leading-relaxed mb-4">
                         We only access your Gmail account through the <strong>gmail.settings.basic</strong> and <strong>gmail.readonly</strong> scopes to identify lead notification emails from Zillow, Redfin, and Realtor.com.
                     </p>
-                    <ul class="text-xs text-slate-500 list-disc pl-6 space-y-2">
-                        <li>We do NOT read personal correspondence.</li>
-                        <li>We do NOT store your full email body on our permanent servers.</li>
-                        <li>We do NOT sell or share your lead data with third-party advertisers.</li>
+                    <ul class="text-xs text-slate-500 list-disc pl-6 space-y-3">
+                        <li>We do NOT read personal or non-real-estate correspondence.</li>
+                        <li>We do NOT store your full email bodies on permanent storage.</li>
+                        <li>We do NOT sell or share lead data with third-party advertisers.</li>
                     </ul>
                 </section>
 
                 <section>
                     <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-microchip text-blue-500"></i> How We Use Your Data
+                        <i class="fas fa-microchip text-blue-500 text-sm"></i> Operational Usage
                     </h2>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        Data is used exclusively to provide the <strong>Flux Vision</strong> lead-routing service. This includes:
+                        Data is used exclusively to provide the <strong>Flux Vision</strong> lead-routing service:
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                         <div class="glass p-6 rounded-2xl border-white/5">
                             <span class="text-blue-400 font-bold block mb-1">Lead Triage</span>
-                            <span class="text-[10px] text-slate-500 uppercase">Extracting contact info from Zillow emails.</span>
+                            <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Automated parsing of Zillow alerts.</span>
                         </div>
                         <div class="glass p-6 rounded-2xl border-white/5">
-                            <span class="text-blue-400 font-bold block mb-1">Instant SMS</span>
-                            <span class="text-[10px] text-slate-500 uppercase">Forwarding prospect info to your mobile device.</span>
+                            <span class="text-blue-400 font-bold block mb-1">Instant Delivery</span>
+                            <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Encrypted SMS/WhatsApp notifications.</span>
                         </div>
                     </div>
                 </section>
 
                 <section>
                     <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-lock text-blue-500"></i> Security Standards
+                        <i class="fas fa-lock text-blue-500 text-sm"></i> Encryption Standards
                     </h2>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        All authentication is handled via <strong>OAuth 2.0</strong>. Flux Automation never sees or stores your Google password. We utilize AES-256 encryption for all data in transit.
+                        Authentication is handled via <strong>OAuth 2.0</strong>. We never see or store your Google password. We utilize AES-256 encryption for all data in transit between your account and our server at <code>connect.fluxautomation.site</code>.
                     </p>
                 </section>
 
                 <section class="pt-10 border-t border-white/5 text-center">
-                    <p class="text-xs text-slate-600 uppercase tracking-[0.3em] mb-4 font-bold">Inquiries & Data Deletion</p>
-                    <a href="mailto:support@fluxautomation.site" class="text-blue-400 font-bold hover:glow transition">support@fluxautomation.site</a>
+                    <p class="text-xs text-slate-600 uppercase tracking-[0.3em] mb-4 font-bold">Data Control & Deletion</p>
+                    <a href="mailto:aiagentcustomersupport@gmail.com" class="text-blue-400 font-bold hover:text-blue-300 transition underline decoration-blue-500/20">
+                        aiagentcustomersupport@gmail.com
+                    </a>
                 </section>
             </div>
         </div>
     </main>
 
     <footer class="py-12 border-t border-white/5 bg-black/20 text-center">
-        <p class="text-[10px] text-slate-600 font-bold uppercase tracking-widest">© 2026 Flux Automation Inc. | New Jersey, USA</p>
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[10px] text-slate-600 font-bold uppercase tracking-widest">© 2026 Flux Automation Inc. | New Jersey, USA</p>
+            <div class="flex gap-8">
+                <a href="about.html" class="text-[10px] text-slate-600 font-bold uppercase tracking-widest hover:text-white">About Us</a>
+                <a href="mailto:aiagentcustomersupport@gmail.com" class="text-[10px] text-slate-600 font-bold uppercase tracking-widest hover:text-white italic">Contact Support</a>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('active');
+            menu.classList.toggle('hidden');
+            
+            if(icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    </script>
 </body>
 </html>
