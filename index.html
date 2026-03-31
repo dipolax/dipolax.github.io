@@ -9,60 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #020617; 
-            color: #f8fafc;
-            overflow-x: hidden;
-        }
-
-        .bg-pricing {
-            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        /* Animated Button Shine */
-        .btn-animate {
-            position: relative;
-            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .btn-animate::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: all 0.6s;
-        }
-
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; overflow-x: hidden; }
+        .bg-pricing { background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+        .glass-card:hover { transform: translateY(-15px); border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .btn-animate { position: relative; background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); overflow: hidden; transition: all 0.3s ease; }
+        .btn-animate::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent); transition: all 0.6s; }
         .btn-animate:hover::before { left: 100%; }
-
-        .price-text {
-            background: linear-gradient(to bottom, #ffffff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Mobile Menu Transitions */
-        #mobile-menu {
-            transition: all 0.3s ease-in-out;
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-        #mobile-menu.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
+        .price-text { background: linear-gradient(to bottom, #ffffff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        #mobile-menu { transition: all 0.3s ease-in-out; transform: translateY(-100%); opacity: 0; }
+        #mobile-menu.active { transform: translateY(0); opacity: 1; }
     </style>
 </head>
 <body class="bg-pricing min-h-screen">
@@ -76,24 +32,24 @@
                 <span class="text-xl md:text-2xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Automation</span></span>
             </a>
 
-            <div class="hidden md:flex space-x-12 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
+            <div class="hidden lg:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
                 <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
                 <a href="pricing.html" class="text-white border-b border-blue-500 pb-1">Pricing</a>
-                <a href="about.html" class="hover:text-white transition">Vision</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="privacy.html" class="hover:text-white transition">Privacy</a>
             </div>
 
             <div class="flex items-center gap-4">
                 <a href="connect.html" class="hidden sm:block btn-animate text-white px-6 md:px-8 py-2 md:py-3 rounded-full text-[10px] font-bold uppercase tracking-widest">Connect Leads</a>
-                <button onclick="toggleMenu()" class="md:hidden text-white text-xl p-2">
-                    <i class="fas fa-bars" id="menu-icon"></i>
-                </button>
+                <button onclick="toggleMenu()" class="lg:hidden text-white text-xl p-2"><i class="fas fa-bars" id="menu-icon"></i></button>
             </div>
         </div>
 
-        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex flex-col p-8 space-y-6 md:hidden">
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex flex-col p-8 space-y-6 lg:hidden hidden">
             <a href="how-it-works.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Magic</a>
             <a href="pricing.html" class="text-sm font-bold uppercase tracking-widest text-white">Pricing</a>
-            <a href="about.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Vision</a>
+            <a href="about.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">About</a>
+            <a href="privacy.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Privacy</a>
             <a href="https://connect.fluxautomation.site/authorize" class="btn-animate text-center py-4 rounded-xl text-white font-bold uppercase text-xs tracking-widest">Connect Zillow</a>
         </div>
     </nav>
@@ -122,25 +78,10 @@
                         <span class="text-blue-400 text-[9px] md:text-[10px] font-bold uppercase tracking-widest">7-Day Free Trial Included</span>
                     </div>
                 </div>
-                <ul class="space-y-4 md:space-y-6 mb-12 md:mb-16 flex-grow">
-                    <li class="flex items-center gap-4 text-slate-300 text-sm">
-                        <div class="w-6 h-6 bg-blue-500/20 rounded-full flex-shrink-0 flex items-center justify-center">
-                            <i class="fas fa-check text-blue-400 text-[10px]"></i>
-                        </div>
-                        Flux Vision AI Instance
-                    </li>
-                    <li class="flex items-center gap-4 text-slate-300 text-sm">
-                        <div class="w-6 h-6 bg-blue-500/20 rounded-full flex-shrink-0 flex items-center justify-center">
-                            <i class="fas fa-check text-blue-400 text-[10px]"></i>
-                        </div>
-                        Unlimited Lead Ingestion
-                    </li>
-                    <li class="flex items-center gap-4 text-slate-300 text-sm">
-                        <div class="w-6 h-6 bg-blue-500/20 rounded-full flex-shrink-0 flex items-center justify-center">
-                            <i class="fas fa-check text-blue-400 text-[10px]"></i>
-                        </div>
-                        Instant SMS & WhatsApp Alerts
-                    </li>
+                <ul class="space-y-4 md:space-y-6 mb-12 md:mb-16 flex-grow text-slate-300 text-sm">
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-blue-400"></i> Flux Vision AI Instance</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-blue-400"></i> Unlimited Lead Ingestion</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-blue-400"></i> Instant SMS & WhatsApp Alerts</li>
                 </ul>
                 <a href="https://buy.stripe.com/solo_agent_trial" class="btn-animate w-full py-5 md:py-6 rounded-2xl md:rounded-3xl text-center font-bold text-white text-base md:text-lg tracking-tight">
                     Start Free Trial
@@ -148,9 +89,7 @@
             </div>
 
             <div class="glass-card p-8 md:p-16 rounded-[2.5rem] md:rounded-[4rem] border-blue-500/40 bg-blue-500/5 flex flex-col relative shadow-2xl lg:scale-105">
-                <div class="absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[9px] md:text-[10px] font-bold px-6 md:px-8 py-2 rounded-full uppercase tracking-[0.3em] whitespace-nowrap shadow-lg shadow-blue-600/40">
-                    Enterprise Favorite
-                </div>
+                <div class="absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[9px] md:text-[10px] font-bold px-6 md:px-8 py-2 rounded-full uppercase tracking-[0.3em] shadow-lg shadow-blue-600/40">Enterprise Favorite</div>
                 <div class="mb-8 md:mb-10">
                     <span class="text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em]">Brokerage Power</span>
                     <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Power Team</h2>
@@ -158,27 +97,11 @@
                 <div class="mb-10 md:mb-12">
                     <div class="price-text text-5xl md:text-7xl font-black mb-2">$200</div>
                     <p class="text-slate-500 font-medium text-sm md:text-base">up to 10 agents / monthly</p>
-                    <p class="text-blue-400 text-[10px] font-bold mt-3 uppercase tracking-widest italic">Save $150/mo vs Solo</p>
                 </div>
-                <ul class="space-y-4 md:space-y-6 mb-12 md:mb-16 flex-grow">
-                    <li class="flex items-center gap-4 text-slate-200 text-sm">
-                        <div class="w-6 h-6 bg-blue-500/40 rounded-full flex-shrink-0 flex items-center justify-center">
-                            <i class="fas fa-check text-white text-[10px]"></i>
-                        </div>
-                        10 Active Flux Units
-                    </li>
-                    <li class="flex items-center gap-4 text-slate-200 text-sm">
-                        <div class="w-6 h-6 bg-blue-500/40 rounded-full flex-shrink-0 flex items-center justify-center">
-                            <i class="fas fa-check text-white text-[10px]"></i>
-                        </div>
-                        Centralized Dashboard
-                    </li>
-                    <li class="flex items-center gap-4 text-slate-200 text-sm">
-                        <div class="w-6 h-6 bg-blue-500/40 rounded-full flex-shrink-0 flex items-center justify-center">
-                            <i class="fas fa-check text-white text-[10px]"></i>
-                        </div>
-                        Priority MLS Sync
-                    </li>
+                <ul class="space-y-4 md:space-y-6 mb-12 md:mb-16 flex-grow text-slate-200 text-sm">
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-blue-400"></i> 10 Active Flux Units</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-blue-400"></i> Centralized Dashboard</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-blue-400"></i> Priority MLS Sync</li>
                 </ul>
                 <a href="https://buy.stripe.com/brokerage_plan" class="btn-animate w-full py-5 md:py-6 rounded-2xl md:rounded-3xl text-center font-bold text-white text-base md:text-lg tracking-tight">
                     Deploy Power Team
