@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,83 +9,199 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; overflow: hidden; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .input-glow:focus { border-color: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); outline: none; }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #020617; 
+            color: #f8fafc; 
+            overflow-x: hidden; 
+        }
+
+        .bg-glow { 
+            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%); 
+        }
+
+        .glass { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(40px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+
+        .input-glow:focus { 
+            border-color: #3b82f6; 
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); 
+            outline: none; 
+        }
+
         .pulse-text { animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
         .hidden-state { display: none !important; }
+
+        .btn-animate {
+            position: relative;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-animate::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s;
+        }
+        .btn-animate:hover::before { left: 100%; }
+
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            display: flex;
+        }
     </style>
 </head>
-<body class="bg-[#020617] flex items-center justify-center min-h-screen p-6">
-    
-    <div id="support-container" class="max-w-2xl w-full animate__animated animate__fadeInUp">
-        <div class="glass p-10 md:p-16 rounded-[4rem] relative overflow-hidden shadow-2xl">
-            <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
-            
-            <div id="form-content">
-                <div class="flex items-center gap-4 mb-10">
-                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/30">
-                        <i class="fas fa-headset text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-black text-white uppercase italic tracking-tighter">Support <span class="text-blue-400">Portal</span></h1>
-                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Aura Neural Diagnostic System</p>
-                    </div>
-                </div>
+<body class="bg-glow min-h-screen">
 
-                <div class="space-y-8">
-                    <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-4">Select Issue Protocol</label>
-                        <select id="issue-type" class="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white input-glow appearance-none cursor-pointer">
-                            <option class="bg-[#020617]" value="auth">Authentication / OAuth Error</option>
-                            <option class="bg-[#020617]" value="lag">Lead Processing Lag</option>
-                            <option class="bg-[#020617]" value="missing">Zillow/Redfin Missing Leads</option>
-                            <option class="bg-[#020617]" value="billing">Billing & Stripe Subscription</option>
-                            <option class="bg-[#020617]" value="other">General Neural Inquiry</option>
-                        </select>
-                    </div>
+    <nav class="fixed w-full z-[100] py-4 md:py-6 px-6 md:px-10 border-b border-white/5 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="/flux-brand.png?v=5" alt="Flux Vision Logo" class="w-10 h-10 rounded-xl shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300 object-cover">
+                <span class="text-xl md:text-2xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Vision</span></span>
+            </a>
 
-                    <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-4">Incident Description</label>
-                        <textarea id="issue-desc" rows="5" class="w-full bg-white/5 border border-white/10 rounded-3xl p-6 text-white input-glow transition-all" placeholder="Describe the behavior of your AI agent..."></textarea>
-                    </div>
-
-                    <button onclick="handleSupport()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-6 rounded-3xl uppercase tracking-[0.4em] text-xs transition-all duration-500 shadow-xl shadow-blue-600/20 active:scale-95">
-                        Initiate Transmission
-                    </button>
-                </div>
+            <div class="hidden lg:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
+                <a href="pricing.html" class="hover:text-white transition">Pricing</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="privacy.html" class="hover:text-white transition">Privacy</a>
+                <a href="support.html" class="text-white border-b border-blue-500 pb-1">Support</a>
             </div>
 
-            <div id="success-state" class="hidden-state py-20 text-center">
-                <div class="w-24 h-24 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-8 border border-blue-500/30">
-                    <i class="fas fa-satellite-dish text-blue-400 text-4xl animate-bounce"></i>
-                </div>
-                <h2 class="text-3xl font-black text-white uppercase italic tracking-tighter mb-4">Signal Received</h2>
-                <p class="text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em] pulse-text">Transmission Encrypted & Stored</p>
-                <button onclick="location.href='index.html'" class="mt-12 text-slate-500 hover:text-white text-[10px] font-bold uppercase tracking-[0.5em] transition">Return to Home</button>
+            <div class="flex items-center gap-4">
+                <a href="connect.html" class="hidden sm:block btn-animate text-white px-6 md:px-8 py-2 md:py-3 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-blue-600/20">Connect Leads</a>
+                <button onclick="toggleMenu()" class="lg:hidden text-white text-xl p-2">
+                    <i class="fas fa-bars" id="menu-icon"></i>
+                </button>
             </div>
         </div>
-    </div>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex-col p-8 space-y-6 lg:hidden hidden text-center">
+            <a href="index.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Home</a>
+            <a href="how-it-works.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Magic</a>
+            <a href="pricing.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Pricing</a>
+            <a href="about.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">About</a>
+            <a href="privacy.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Privacy</a>
+            <a href="support.html" class="text-sm font-bold uppercase tracking-widest text-white">Support</a>
+            <a href="connect.html" class="bg-blue-600 text-center py-4 rounded-xl text-white font-bold uppercase text-xs tracking-widest">Connect Leads</a>
+        </div>
+    </nav>
+
+    <main class="flex items-center justify-center pt-40 pb-20 px-6">
+        <div id="support-container" class="max-w-2xl w-full animate__animated animate__fadeInUp">
+            <div class="glass p-10 md:p-16 rounded-[4rem] relative overflow-hidden shadow-2xl">
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
+                
+                <div id="form-content">
+                    <div class="flex items-center gap-4 mb-10">
+                        <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/30">
+                            <i class="fas fa-headset text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-black text-white uppercase italic tracking-tighter">Support <span class="text-blue-400">Portal</span></h1>
+                            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Aura Neural Diagnostic System</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-4">Select Issue Protocol</label>
+                            <select id="issue-type" class="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white input-glow appearance-none cursor-pointer">
+                                <option class="bg-[#020617]" value="auth">Authentication / OAuth Error</option>
+                                <option class="bg-[#020617]" value="lag">Lead Processing Lag</option>
+                                <option class="bg-[#020617]" value="missing">Zillow/Redfin Missing Leads</option>
+                                <option class="bg-[#020617]" value="billing">Billing & Stripe Subscription</option>
+                                <option class="bg-[#020617]" value="other">General Neural Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-4">Incident Description</label>
+                            <textarea id="issue-desc" rows="5" class="w-full bg-white/5 border border-white/10 rounded-3xl p-6 text-white input-glow transition-all" placeholder="Describe the behavior of your AI agent..."></textarea>
+                        </div>
+
+                        <button onclick="handleSupport()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-6 rounded-3xl uppercase tracking-[0.4em] text-xs transition-all duration-500 shadow-xl shadow-blue-600/20 active:scale-95">
+                            Initiate Transmission
+                        </button>
+                    </div>
+                </div>
+
+                <div id="success-state" class="hidden-state py-20 text-center">
+                    <div class="w-24 h-24 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-8 border border-blue-500/30">
+                        <i class="fas fa-satellite-dish text-blue-400 text-4xl animate-bounce"></i>
+                    </div>
+                    <h2 class="text-3xl font-black text-white uppercase italic tracking-tighter mb-4">Signal Received</h2>
+                    <p class="text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em] pulse-text">Transmission Encrypted & Stored</p>
+                    <button onclick="location.href='index.html'" class="mt-12 text-slate-500 hover:text-white text-[10px] font-bold uppercase tracking-[0.5em] transition">Return to Home</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 md:py-20 border-t border-white/5 bg-black/20">
+        <div class="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="text-center md:text-left flex items-center gap-4">
+                <img src="/flux-brand.png?v=5" alt="Flux Vision" class="w-12 h-12 rounded-xl opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500">
+                <div>
+                    <div class="text-xl font-black text-white uppercase italic tracking-tighter">Flux<span class="text-blue-500">Vision</span></div>
+                    <p class="text-[9px] md:text-[10px] text-slate-600 font-bold uppercase tracking-widest mt-2">© 2026 Flux Automation Inc.</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-12 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
+                <a href="pricing.html" class="hover:text-white transition">Pricing</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="privacy.html" class="hover:text-white transition">Privacy</a>
+                <a href="terms.html" class="hover:text-white transition">Terms</a>
+                <a href="support.html" class="text-white border-b border-blue-500">Support</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('active');
+            menu.classList.toggle('hidden');
+            
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
         function handleSupport() {
             const btn = document.querySelector('button');
             const desc = document.getElementById('issue-desc');
             
-            // Effect: Change button text during "sending"
             btn.innerHTML = "Encrypting...";
             btn.disabled = true;
 
             setTimeout(() => {
-                // Clear the text
                 desc.value = "";
-                
-                // Switch Views
                 document.getElementById('form-content').classList.add('hidden-state');
                 document.getElementById('success-state').classList.remove('hidden-state');
-                
-                // Pulse effect is handled by the CSS class already!
             }, 1500);
         }
     </script>
