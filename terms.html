@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Flux Vision - Global Data Protocols</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; }
+        .bg-galactic { background: radial-gradient(circle at 50% 0%, #0f172a 0%, #020617 100%); }
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .legal-card { border-left: 4px solid #2563eb; padding-left: 1.5rem; margin-bottom: 3rem; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-galactic min-h-screen">
+    <nav class="fixed w-full z-[100] py-6 px-10 border-b border-white/5 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="/flux-brand.png?v=5" alt="Flux Logo" class="w-10 h-10 rounded-xl shadow-lg shadow-blue-500/20">
+                <span class="text-2xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Vision</span></span>
+            </a>
+            <div class="hidden lg:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
+                <a href="pricing.html" class="hover:text-white transition">Pricing</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="privacy.html" class="hover:text-white transition">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-48 pb-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <header class="mb-20 animate__animated animate__fadeInDown">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tighter italic uppercase">Terms of <br><span class="text-blue-500">Service</span></h1>
+                <p class="text-slate-500 uppercase tracking-[0.5em] font-bold text-sm">Protocol Version 2.6.1 | Last Update: April 2026</p>
+            </header>
+
+            <div class="space-y-20 text-slate-400 leading-relaxed">
+                <section class="legal-card">
+                    <h2 class="text-white text-xl font-bold uppercase tracking-widest mb-4 italic">1. Neural Link Authorization</h2>
+                    <p>By connecting your Google Business Workspace to Flux Vision (Aura Neural), you grant the system authorization to utilize OAuth 2.0 protocols to monitor metadata and specific lead headers. You acknowledge that Flux Vision acts as a data processor for the sole purpose of real estate lead extraction.</p>
+                </section>
+
+                <section class="legal-card">
+                    <h2 class="text-white text-xl font-bold uppercase tracking-widest mb-4 italic">2. Google API & Limited Use</h2>
+                    <p class="mb-4">Flux Vision's use and transfer of information received from Google APIs to any other app will adhere to the <strong>Google API Services User Data Policy</strong>, including the Limited Use requirements.</p>
+                    <p class="italic text-sm text-blue-400/60 border border-blue-500/20 p-4 rounded-xl">"We do not utilize, sell, or transfer Gmail data for the purposes of serving advertisements or performing credit-scoring."</p>
+                </section>
+
+                <section class="legal-card">
+                    <h2 class="text-white text-xl font-bold uppercase tracking-widest mb-4 italic">3. Subscription & Billing (Stripe)</h2>
+                    <p>All transactions are processed via Stripe's encrypted gateway. Flux Vision offers a 7-day technical evaluation period (Trial). Upon expiration of the trial, the selected billing cycle (Monthly or Annual) will commence. </p>
+                    <ul class="list-disc pl-6 mt-4 space-y-2 text-sm">
+                        <li><strong>Fulfillment:</strong> Service access is provisioned immediately upon authentication.</li>
+                        <li><strong>Cancellations:</strong> Users may terminate the neural link via the Mission Control dashboard at any time.</li>
+                        <li><strong>Refunds:</strong> Due to the instant-access nature of the SaaS, refunds are not issued for partial months.</li>
+                    </ul>
+                </section>
+
+                <section class="legal-card">
+                    <h2 class="text-white text-xl font-bold uppercase tracking-widest mb-4 italic">4. Liability & AI Accuracy</h2>
+                    <p>Flux Vision utilizes advanced LLM-based triage. While we maintain a 99.8% extraction accuracy rate, Aura Neural / Flux Automation Inc. is not liable for missed leads or data misinterpretations caused by third-party platform (Zillow/Redfin) layout changes.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-20 border-t border-white/5 bg-black/20 text-center">
+        <div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="text-left">
+                <div class="text-xl font-black text-white uppercase italic tracking-tighter">Flux<span class="text-blue-500">Vision</span></div>
+                <p class="text-[10px] text-slate-600 font-bold uppercase tracking-widest mt-2">© 2026 Flux Automation Inc.</p>
+            </div>
+            <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="terms.html" class="text-white border-b border-blue-500">Terms</a>
+                <a href="support.html" class="hover:text-white transition">Support</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
