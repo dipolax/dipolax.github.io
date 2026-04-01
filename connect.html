@@ -8,7 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
@@ -30,25 +29,9 @@
             border: 1px solid rgba(255, 255, 255, 0.08); 
         }
 
-        .btn-google { 
-            background: #ffffff; 
-            color: #000000; 
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 20px 40px -10px rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-google:hover { 
-            background: #2563eb; 
-            color: #ffffff; 
-            transform: translateY(-5px); 
-            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.4);
-        }
-
         /* Mobile Menu */
         #mobile-menu { transition: 0.3s ease-in-out; transform: translateY(-100%); opacity: 0; }
         #mobile-menu.active { transform: translateY(0); opacity: 1; display: flex; }
-
-        .hidden-state { display: none !important; }
     </style>
 </head>
 <body class="bg-glow min-h-screen">
@@ -97,31 +80,21 @@
                         Mission Control
                     </h1>
 
-                    <div id="logged-out-view">
-                        <p class="text-slate-400 mb-12 text-base md:text-lg leading-relaxed">
-                            Log in to your **Flux Automation** account to manage your lead integrations and AI routing settings.
-                        </p>
-                        <button onclick="login()" class="btn-google block w-full py-6 md:py-7 rounded-[2rem] font-bold text-lg md:text-xl flex items-center justify-center gap-4">
-                            <i class="fas fa-sign-in-alt"></i> Sign In to Flux
-                        </button>
-                        <p class="mt-6 text-[10px] text-slate-500 uppercase tracking-widest leading-relaxed">
-                            By connecting, you agree to our <br>
-                            <a href="terms.html" class="text-blue-500 underline">Terms of Service</a> and <a href="privacy.html" class="text-blue-500 underline">Privacy Policy</a>.
-                        </p>
-                    </div>
-
-                    <div id="logged-in-view" class="hidden-state">
-                        <p class="text-slate-400 mb-12 text-base md:text-lg leading-relaxed">
-                            Welcome back. Click below to authorize your Realtor Gmail and connect your **Zillow/Redfin** leads to the AI.
+                    <div id="connection-view">
+                        <p class="text-slate-400 mb-12 text-base md:text-lg leading-relaxed px-4">
+                            Establish the secure link between your Realtor Gmail and the AI processing core to start routing Zillow, Redfin, and Realtor.com leads.
                         </p>
                         
-                        <a href="/authorize" style="text-decoration: none;" class="block w-full">
-                            <button style="background-color: #1a73e8; color: white; padding: 25px 25px; border: none; border-radius: 2rem; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.25rem;" class="shadow-2xl hover:bg-blue-700 transition">
-                                Connect Zillow Leads to Flux Automation
+                        <a href="https://fluxautomation.site/authorize" style="text-decoration: none;" class="block w-full">
+                            <button style="padding: 25px 30px; background-color: #1a73e8; color: white; border: none; border-radius: 2rem; cursor: pointer; width: 100%; font-weight: bold; font-size: 1.25rem;" class="shadow-2xl hover:bg-blue-700 transition">
+                                Connect Leads to Flux Automation
                             </button>
                         </a>
 
-                        <button onclick="logout()" class="mt-8 text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-white transition">Sign Out</button>
+                        <p class="mt-8 text-[10px] text-slate-500 uppercase tracking-widest leading-relaxed">
+                            By connecting, you agree to our <br>
+                            <a href="privacy.html" class="text-blue-500 underline">Privacy Policy</a> and <a href="terms.html" class="text-blue-500 underline">Terms of Service</a>.
+                        </p>
                     </div>
 
                     <div class="mt-12 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-8 md:gap-12 opacity-40">
@@ -154,50 +127,6 @@
     </footer>
 
     <script>
-        // --- SUPABASE SETUP ---
-        const _supabase = supabase.createClient('https://tdauhqzritjdnprcleqd.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkYXVocXpyaXRqZG5wcmNsZXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUwMDAxNDEsImV4cCI6MjA5MDU3NjE0MX0.V3QAM4bYbFpe6v-sIz6P4ueVALmwOG1h-X-SwpH1zpk');
-
-        window.onload = async () => {
-            const { data: { session } } = await _supabase.auth.getSession();
-            updateUI(session);
-
-            _supabase.auth.onAuthStateChange((event, session) => {
-                updateUI(session);
-            });
-        };
-
-        function updateUI(session) {
-            const outView = document.getElementById('logged-out-view');
-            const inView = document.getElementById('logged-in-view');
-            if (session) {
-                outView.classList.add('hidden-state');
-                inView.classList.remove('hidden-state');
-            } else {
-                outView.classList.remove('hidden-state');
-                inView.classList.add('hidden-state');
-            }
-        }
-
-        async function login() {
-            const { data, error } = await _supabase.auth.signInWithOAuth({
-                provider: 'google',
-                options: {
-                    redirectTo: 'https://fluxautomation.site/connect.html',
-                    queryParams: {
-                        access_type: 'offline',
-                        prompt: 'consent',
-                        scope: 'https://www.googleapis.com/auth/gmail.settings.basic https://www.googleapis.com/auth/gmail.modify openid email profile'
-                    }
-                }
-            });
-            if (error) alert("Error: " + error.message);
-        }
-
-        async function logout() {
-            await _supabase.auth.signOut();
-            location.reload();
-        }
-
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
