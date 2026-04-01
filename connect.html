@@ -3,77 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect | Flux Automation - Secure Lead Integration</title>
+    <title>Connect | Flux Vision - Secure Lead Integration</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; }
-        .bg-glow { background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%); }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #020617; 
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .bg-glow { 
+            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%); 
+        }
+
+        .glass { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+        }
+
         .btn-google { 
             background: #ffffff; 
             color: #000000; 
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow: 0 20px 40px -10px rgba(255, 255, 255, 0.1);
         }
+
         .btn-google:hover { 
             background: #2563eb; 
             color: #ffffff; 
             transform: translateY(-5px); 
             box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.4);
         }
+
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            display: flex;
+        }
     </style>
 </head>
-<body class="bg-glow min-h-screen flex items-center justify-center p-6">
+<body class="bg-glow min-h-screen">
 
-    <a href="index.html" class="fixed top-10 left-10 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 hover:text-white transition">
-        <i class="fas fa-arrow-left mr-2"></i> Return to Mission Control
-    </a>
-
-    <section class="animate__animated animate__zoomIn">
-        <div class="glass max-w-2xl w-full p-16 md:p-24 rounded-[5rem] text-center border-blue-500/20 relative overflow-hidden">
-            
-            <div class="absolute -top-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
-
-            <div class="relative z-10">
-                <div class="w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-12 shadow-2xl shadow-blue-600/30">
-                    <i class="fab fa-google text-white text-4xl"></i>
+    <nav class="fixed w-full z-[100] py-4 md:py-6 px-6 md:px-10 border-b border-white/5 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:bg-blue-500 transition-colors">
+                    <i class="fas fa-bolt text-white"></i>
                 </div>
+                <span class="text-xl md:text-2xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Vision</span></span>
+            </a>
 
-                <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-8 tracking-tighter leading-tight">
-                    Authorize Flux Vision AI
-                </h1>
+            <div class="hidden lg:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
+                <a href="pricing.html" class="hover:text-white transition">Pricing</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="privacy.html" class="hover:text-white transition">Privacy</a>
+            </div>
 
-                <p class="text-slate-400 mb-16 text-lg leading-relaxed">
-                    Connect your Realtor Gmail account to activate **Flux Vision**. We will automatically route your Zillow and Redfin leads directly to your dashboard.
-                </p>
+            <button onclick="toggleMenu()" class="lg:hidden text-white text-xl p-2">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex-col p-8 space-y-6 lg:hidden hidden">
+            <a href="index.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Home</a>
+            <a href="how-it-works.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Magic</a>
+            <a href="pricing.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Pricing</a>
+            <a href="about.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">About</a>
+            <a href="privacy.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Privacy</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen flex items-center justify-center pt-24 pb-12 px-6">
+        <section class="animate__animated animate__zoomIn w-full max-w-2xl">
+            <div class="glass p-12 md:p-24 rounded-[3rem] md:rounded-[5rem] text-center border-blue-500/20 relative overflow-hidden">
                 
-                <a href="https://connect.fluxautomation.site/authorize" 
-                   class="btn-google block w-full py-7 rounded-[2rem] font-bold text-xl flex items-center justify-center gap-4">
-                    <i class="fab fa-google"></i> Connect Zillow to Flux AI
-                </a>
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
 
-                <div class="mt-16 pt-16 border-t border-white/5 flex flex-wrap justify-center gap-10 md:gap-16 opacity-30">
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
-                        <i class="fas fa-lock text-blue-400"></i> Bank-Level Encryption
-                    </span>
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
-                        <i class="fas fa-check-circle text-blue-400"></i> Verified API Partner
-                    </span>
-                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
-                        <i class="fas fa-user-shield text-blue-400"></i> Privacy Guarded
-                    </span>
+                <div class="relative z-10">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-blue-600/30">
+                        <i class="fab fa-google text-white text-4xl"></i>
+                    </div>
+
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tighter leading-tight">
+                        Authorize Flux Vision AI
+                    </h1>
+
+                    <p class="text-slate-400 mb-12 text-base md:text-lg leading-relaxed">
+                        Connect your Realtor Gmail account to activate **Flux Vision**. We will automatically route your Zillow and Redfin leads directly to your dashboard.
+                    </p>
+                    
+                    <a href="https://connect.fluxautomation.site/authorize" 
+                       class="btn-google block w-full py-6 md:py-7 rounded-[2rem] font-bold text-lg md:text-xl flex items-center justify-center gap-4">
+                        <i class="fab fa-google"></i> Connect Zillow to Flux AI
+                    </a>
+
+                    <div class="mt-12 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-8 md:gap-12 opacity-40">
+                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+                            <i class="fas fa-lock text-blue-400"></i> AES-256 Encryption
+                        </span>
+                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-400"></i> Verified Partner
+                        </span>
+                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+                            <i class="fas fa-user-shield text-blue-400"></i> Data Fortified
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="mt-10 flex justify-center gap-8 text-[9px] font-bold uppercase tracking-[0.4em] text-slate-600">
-            <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
-            <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
-        </div>
-    </section>
+        </section>
+    </main>
 
+    <footer class="py-12 md:py-20 border-t border-white/5 bg-black/20">
+        <div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="text-center md:text-left">
+                <div class="text-xl font-black text-white uppercase italic tracking-tighter">Flux<span class="text-blue-500">Vision</span></div>
+                <p class="text-[9px] md:text-[10px] text-slate-600 font-bold uppercase tracking-widest mt-2">© 2026 Flux Automation Inc.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-12 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                <a href="privacy.html" class="hover:text-white transition">Privacy</a>
+                <a href="terms.html" class="hover:text-white transition">Terms</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="mailto:aiagentcustomersupport@gmail.com" class="hover:text-white transition italic">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('active');
+            menu.classList.toggle('hidden');
+            
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    </script>
 </body>
 </html>
