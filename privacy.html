@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Flux Automation - Secure Intelligence</title>
+    <title>Privacy Policy | Flux Vision - Secure Intelligence</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -34,7 +34,6 @@
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
         }
 
-        /* Mobile Menu Transitions */
         #mobile-menu { 
             transition: all 0.3s ease-in-out; 
             transform: translateY(-100%); 
@@ -91,7 +90,7 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex-col p-8 space-y-6 lg:hidden hidden">
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex-col p-8 space-y-6 lg:hidden hidden text-center">
             <a href="index.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Home</a>
             <a href="how-it-works.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Magic</a>
             <a href="pricing.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Pricing</a>
@@ -108,13 +107,13 @@
                 <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6">
                     <i class="fas fa-user-shield text-blue-400 text-2xl"></i>
                 </div>
-                <h1 class="text-3xl md:text-4xl font-extrabold mb-6 tracking-tight leading-tight text-white">Privacy & Data Governance</h1>
-                <p class="text-slate-400 leading-relaxed mb-8 text-sm">Effective Date: March 31, 2026. Based in New Jersey, USA.</p>
+                <h1 class="text-3xl md:text-4xl font-extrabold mb-6 tracking-tight leading-tight text-white uppercase italic">Privacy & Data Governance</h1>
+                <p class="text-slate-400 leading-relaxed mb-8 text-sm uppercase tracking-widest font-bold">Effective Date: March 31, 2026</p>
                 
                 <div class="bg-blue-600/5 border-l-4 border-blue-500 p-6 rounded-r-2xl">
                     <h3 class="text-white font-bold text-sm uppercase tracking-widest mb-3 italic">Google API Limited Use Disclosure</h3>
                     <p class="text-sm text-slate-300 leading-relaxed italic">
-                        "Flux Automation's use and transfer of information received from Google APIs to any other app will adhere to 
+                        "Flux Vision's use and transfer of information received from Google APIs to any other app will adhere to 
                         <a href="https://developers.google.com/terms/api-services-user-data-policy#limited-use" class="text-blue-400 underline" target="_blank">Google API Services User Data Policy</a>, 
                         including the Limited Use requirements."
                     </p>
@@ -123,50 +122,31 @@
 
             <div class="space-y-12 px-4">
                 <section>
-                    <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                    <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3 italic uppercase">
                         <i class="fas fa-database text-blue-500 text-sm"></i> Data Collection Scope
                     </h2>
                     <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                        We only access your Gmail account through the <strong>gmail.settings.basic</strong> and <strong>gmail.readonly</strong> scopes to identify lead notification emails from Zillow, Redfin, and Realtor.com.
+                        We only access your Gmail account through authorized Google scopes to identify lead notification emails from Zillow, Redfin, and Realtor.com.
                     </p>
-                    <ul class="text-xs text-slate-500 list-disc pl-6 space-y-3">
-                        <li>We do NOT read personal or non-real-estate correspondence.</li>
-                        <li>We do NOT store your full email bodies on permanent storage.</li>
-                        <li>We do NOT sell or share lead data with third-party advertisers.</li>
+                    <ul class="text-xs text-slate-500 list-disc pl-6 space-y-3 font-bold uppercase tracking-wider">
+                        <li>We do NOT read personal correspondence.</li>
+                        <li>We do NOT store your full email bodies permanently.</li>
+                        <li>We do NOT sell data to third-party advertisers.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                        <i class="fas fa-microchip text-blue-500 text-sm"></i> Operational Usage
-                    </h2>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Data is used exclusively to provide the <strong>Flux Vision</strong> lead-routing service:
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                        <div class="glass p-6 rounded-2xl border-white/5">
-                            <span class="text-blue-400 font-bold block mb-1">Lead Triage</span>
-                            <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Automated parsing of Zillow alerts.</span>
-                        </div>
-                        <div class="glass p-6 rounded-2xl border-white/5">
-                            <span class="text-blue-400 font-bold block mb-1">Instant Delivery</span>
-                            <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Encrypted SMS/WhatsApp notifications.</span>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                    <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3 italic uppercase">
                         <i class="fas fa-lock text-blue-500 text-sm"></i> Encryption Standards
                     </h2>
                     <p class="text-slate-400 text-sm leading-relaxed">
-                        Authentication is handled via <strong>OAuth 2.0</strong>. We never see or store your Google password. We utilize AES-256 encryption for all data in transit between your account and our server at <code>connect.fluxautomation.site</code>.
+                        Authentication is handled via <strong>OAuth 2.0</strong>. We never see or store your Google password. We utilize AES-256 encryption for all data in transit between your account and our server.
                     </p>
                 </section>
 
                 <section class="pt-10 border-t border-white/5 text-center">
                     <p class="text-xs text-slate-600 uppercase tracking-[0.3em] mb-4 font-bold">Data Control & Deletion</p>
-                    <a href="mailto:aiagentcustomersupport@gmail.com" class="text-blue-400 font-bold hover:text-blue-300 transition underline decoration-blue-500/20">
+                    <a href="mailto:aiagentcustomersupport@gmail.com" class="text-blue-400 font-bold hover:text-blue-300 transition underline decoration-blue-500/20 italic">
                         aiagentcustomersupport@gmail.com
                     </a>
                 </section>
@@ -177,13 +157,15 @@
     <footer class="py-20 border-t border-white/5 bg-black/20 text-center">
         <div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-10">
             <div class="text-center md:text-left">
-                <div class="text-xl font-black text-white uppercase italic tracking-tighter">Flux<span class="text-blue-500">Automation</span></div>
-                <p class="text-[9px] md:text-[10px] text-slate-600 font-bold uppercase tracking-widest mt-2">© 2026 Flux Automation Inc.</p>
+                <div class="text-xl font-black text-white uppercase italic tracking-tighter">Flux<span class="text-blue-500">Vision</span></div>
+                <p class="text-[9px] md:text-[10px] text-slate-600 font-bold uppercase tracking-widest mt-2">© 2026 Aura Neural / Flux Automation</p>
             </div>
             <div class="flex flex-wrap justify-center gap-6 md:gap-12 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
+                <a href="pricing.html" class="hover:text-white transition">Pricing</a>
                 <a href="privacy.html" class="text-white border-b border-blue-500">Privacy</a>
                 <a href="terms.html" class="hover:text-white transition">Terms</a>
-                <a href="about.html" class="hover:text-white transition">About</a>
                 <a href="mailto:aiagentcustomersupport@gmail.com" class="hover:text-white transition italic">Support</a>
             </div>
         </div>
