@@ -114,10 +114,14 @@
                         <p class="text-slate-400 mb-12 text-base md:text-lg leading-relaxed">
                             Welcome back. Click below to authorize your Realtor Gmail and connect your **Zillow/Redfin** leads to the AI.
                         </p>
-                        <button onclick="connectGmail()" class="btn-google block w-full py-6 md:py-7 rounded-[2rem] font-bold text-lg md:text-xl flex items-center justify-center gap-4 bg-blue-600 text-white">
-                            <i class="fab fa-google"></i> Connect Zillow to Flux AI
-                        </button>
-                        <button onclick="logout()" class="mt-6 text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-white transition">Sign Out</button>
+                        
+                        <a href="/authorize" style="text-decoration: none;" class="block w-full">
+                            <button style="background-color: #1a73e8; color: white; padding: 25px 25px; border: none; border-radius: 2rem; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.25rem;" class="shadow-2xl hover:bg-blue-700 transition">
+                                Connect Zillow Leads to Flux Automation
+                            </button>
+                        </a>
+
+                        <button onclick="logout()" class="mt-8 text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-white transition">Sign Out</button>
                     </div>
 
                     <div class="mt-12 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-8 md:gap-12 opacity-40">
@@ -192,13 +196,6 @@
         async function logout() {
             await _supabase.auth.signOut();
             location.reload();
-        }
-
-        async function connectGmail() {
-            const { data: { session } } = await _supabase.auth.getSession();
-            if (!session) return alert("Please sign in first.");
-            const token = session.access_token;
-            window.location.href = `https://connect.fluxautomation.site/authorize?access_token=${token}`;
         }
 
         function toggleMenu() {
