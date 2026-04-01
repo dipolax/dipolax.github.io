@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | Flux Vision - Technical Diagnostics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; overflow: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .input-glow:focus { border-color: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); outline: none; }
+        .pulse-text { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .hidden-state { display: none !important; }
+    </style>
+</head>
+<body class="bg-[#020617] flex items-center justify-center min-h-screen p-6">
+    
+    <div id="support-container" class="max-w-2xl w-full animate__animated animate__fadeInUp">
+        <div class="glass p-10 md:p-16 rounded-[4rem] relative overflow-hidden shadow-2xl">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
+            
+            <div id="form-content">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/30">
+                        <i class="fas fa-headset text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-black text-white uppercase italic tracking-tighter">Support <span class="text-blue-400">Portal</span></h1>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Aura Neural Diagnostic System</p>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <div>
+                        <label class="block text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-4">Select Issue Protocol</label>
+                        <select id="issue-type" class="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white input-glow appearance-none cursor-pointer">
+                            <option class="bg-[#020617]" value="auth">Authentication / OAuth Error</option>
+                            <option class="bg-[#020617]" value="lag">Lead Processing Lag</option>
+                            <option class="bg-[#020617]" value="missing">Zillow/Redfin Missing Leads</option>
+                            <option class="bg-[#020617]" value="billing">Billing & Stripe Subscription</option>
+                            <option class="bg-[#020617]" value="other">General Neural Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-4">Incident Description</label>
+                        <textarea id="issue-desc" rows="5" class="w-full bg-white/5 border border-white/10 rounded-3xl p-6 text-white input-glow transition-all" placeholder="Describe the behavior of your AI agent..."></textarea>
+                    </div>
+
+                    <button onclick="handleSupport()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-6 rounded-3xl uppercase tracking-[0.4em] text-xs transition-all duration-500 shadow-xl shadow-blue-600/20 active:scale-95">
+                        Initiate Transmission
+                    </button>
+                </div>
+            </div>
+
+            <div id="success-state" class="hidden-state py-20 text-center">
+                <div class="w-24 h-24 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-8 border border-blue-500/30">
+                    <i class="fas fa-satellite-dish text-blue-400 text-4xl animate-bounce"></i>
+                </div>
+                <h2 class="text-3xl font-black text-white uppercase italic tracking-tighter mb-4">Signal Received</h2>
+                <p class="text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em] pulse-text">Transmission Encrypted & Stored</p>
+                <button onclick="location.href='index.html'" class="mt-12 text-slate-500 hover:text-white text-[10px] font-bold uppercase tracking-[0.5em] transition">Return to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleSupport() {
+            const btn = document.querySelector('button');
+            const desc = document.getElementById('issue-desc');
+            
+            // Effect: Change button text during "sending"
+            btn.innerHTML = "Encrypting...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                // Clear the text
+                desc.value = "";
+                
+                // Switch Views
+                document.getElementById('form-content').classList.add('hidden-state');
+                document.getElementById('success-state').classList.remove('hidden-state');
+                
+                // Pulse effect is handled by the CSS class already!
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
