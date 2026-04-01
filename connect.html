@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
@@ -43,17 +44,11 @@
             box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.4);
         }
 
-        /* Mobile Menu Transition */
-        #mobile-menu {
-            transition: all 0.3s ease-in-out;
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-        #mobile-menu.active {
-            transform: translateY(0);
-            opacity: 1;
-            display: flex;
-        }
+        /* Mobile Menu */
+        #mobile-menu { transition: 0.3s ease-in-out; transform: translateY(-100%); opacity: 0; }
+        #mobile-menu.active { transform: translateY(0); opacity: 1; display: flex; }
+
+        .hidden-state { display: none !important; }
     </style>
 </head>
 <body class="bg-glow min-h-screen">
@@ -75,12 +70,10 @@
                 <a href="privacy.html" class="hover:text-white transition">Privacy</a>
             </div>
 
-            <button onclick="toggleMenu()" class="lg:hidden text-white text-xl p-2">
-                <i class="fas fa-bars" id="menu-icon"></i>
-            </button>
+            <button onclick="toggleMenu()" class="lg:hidden text-white text-xl p-2"><i class="fas fa-bars" id="menu-icon"></i></button>
         </div>
 
-        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex-col p-8 space-y-6 lg:hidden hidden">
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#020617]/95 border-b border-white/10 flex-col p-8 space-y-6 lg:hidden hidden text-center">
             <a href="index.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Home</a>
             <a href="how-it-works.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Magic</a>
             <a href="pricing.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Pricing</a>
@@ -100,29 +93,33 @@
                         <i class="fab fa-google text-white text-4xl"></i>
                     </div>
 
-                    <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tighter leading-tight">
-                        Authorize Flux Vision AI
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tighter leading-tight italic uppercase">
+                        Mission Control
                     </h1>
 
-                    <p class="text-slate-400 mb-12 text-base md:text-lg leading-relaxed">
-                        Connect your Realtor Gmail account to activate **Flux Vision**. We will automatically route your Zillow and Redfin leads directly to your dashboard.
-                    </p>
-                    
-                    <a href="https://connect.fluxautomation.site/authorize" 
-                       class="btn-google block w-full py-6 md:py-7 rounded-[2rem] font-bold text-lg md:text-xl flex items-center justify-center gap-4">
-                        <i class="fab fa-google"></i> Connect Zillow to Flux AI
-                    </a>
+                    <div id="logged-out-view">
+                        <p class="text-slate-400 mb-12 text-base md:text-lg leading-relaxed">
+                            Log in to your **Flux Vision** account to manage your lead integrations and AI routing settings.
+                        </p>
+                        <button onclick="login()" class="btn-google block w-full py-6 md:py-7 rounded-[2rem] font-bold text-lg md:text-xl flex items-center justify-center gap-4">
+                            <i class="fas fa-sign-in-alt"></i> Sign In to Flux
+                        </button>
+                    </div>
+
+                    <div id="logged-in-view" class="hidden-state">
+                        <p class="text-slate-400 mb-12 text-base md:text-lg leading-relaxed">
+                            Welcome back. Click below to authorize your Realtor Gmail and connect your **Zillow/Redfin** leads to the AI.
+                        </p>
+                        <button onclick="connectGmail()" class="btn-google block w-full py-6 md:py-7 rounded-[2rem] font-bold text-lg md:text-xl flex items-center justify-center gap-4 bg-blue-600 text-white">
+                            <i class="fab fa-google"></i> Connect Zillow to Flux AI
+                        </button>
+                        <button onclick="logout()" class="mt-6 text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-white transition">Sign Out</button>
+                    </div>
 
                     <div class="mt-12 pt-12 border-t border-white/5 flex flex-wrap justify-center gap-8 md:gap-12 opacity-40">
-                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
-                            <i class="fas fa-lock text-blue-400"></i> AES-256 Encryption
-                        </span>
-                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
-                            <i class="fas fa-check-circle text-blue-400"></i> Verified Partner
-                        </span>
-                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
-                            <i class="fas fa-user-shield text-blue-400"></i> Data Fortified
-                        </span>
+                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2"><i class="fas fa-lock text-blue-400"></i> AES-256 Encryption</span>
+                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2"><i class="fas fa-check-circle text-blue-400"></i> Verified Partner</span>
+                        <span class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2"><i class="fas fa-user-shield text-blue-400"></i> Data Fortified</span>
                     </div>
                 </div>
             </div>
@@ -130,34 +127,73 @@
     </main>
 
     <footer class="py-12 md:py-20 border-t border-white/5 bg-black/20">
-        <div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-10 flex flex-col md:row justify-between items-center gap-10 text-center md:text-left">
+            <div>
                 <div class="text-xl font-black text-white uppercase italic tracking-tighter">Flux<span class="text-blue-500">Vision</span></div>
                 <p class="text-[9px] md:text-[10px] text-slate-600 font-bold uppercase tracking-widest mt-2">© 2026 Flux Automation Inc.</p>
             </div>
             <div class="flex flex-wrap justify-center gap-6 md:gap-12 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="pricing.html" class="hover:text-white transition">Pricing</a>
                 <a href="privacy.html" class="hover:text-white transition">Privacy</a>
-                <a href="terms.html" class="hover:text-white transition">Terms</a>
-                <a href="about.html" class="hover:text-white transition">About</a>
                 <a href="mailto:aiagentcustomersupport@gmail.com" class="hover:text-white transition italic">Support</a>
             </div>
         </div>
     </footer>
 
     <script>
+        // --- SUPABASE SETUP ---
+        const _supabase = supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY');
+
+        // Check login status on page load
+        window.onload = async () => {
+            const { data: { session } } = await _supabase.auth.getSession();
+            updateUI(session);
+        };
+
+        function updateUI(session) {
+            const outView = document.getElementById('logged-out-view');
+            const inView = document.getElementById('logged-in-view');
+            if (session) {
+                outView.classList.add('hidden-state');
+                inView.classList.remove('hidden-state');
+            } else {
+                outView.classList.remove('hidden-state');
+                inView.classList.add('hidden-state');
+            }
+        }
+
+        async function login() {
+            // This triggers the free Google login via Supabase
+            const { data, error } = await _supabase.auth.signInWithOAuth({
+                provider: 'google',
+            });
+        }
+
+        async function logout() {
+            await _supabase.auth.signOut();
+            location.reload();
+        }
+
+        async function connectGmail() {
+            const { data: { session } } = await _supabase.auth.getSession();
+            if (!session) return alert("Please sign in first.");
+
+            // Get the "Passport" (JWT Token)
+            const token = session.access_token;
+
+            // Securely redirect to your Iowa Backend with the token in the URL 
+            // (Your backend needs to check this token via the decorator we built)
+            window.location.href = `https://connect.fluxautomation.site/authorize?access_token=${token}`;
+        }
+
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
             menu.classList.toggle('active');
             menu.classList.toggle('hidden');
-            
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         }
     </script>
 </body>
