@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,6 +51,7 @@
             background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
             overflow: hidden;
             transition: 0.3s;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
         }
         .btn-animate::before {
             content: '';
@@ -65,16 +66,16 @@
 </head>
 <body class="bg-galactic min-h-screen">
 
-    <nav class="fixed w-full z-[100] py-5 px-6 md:px-10 border-b border-white/5 backdrop-blur-xl">
+    <nav class="fixed w-full z-[100] py-4 md:py-6 px-6 md:px-10 border-b border-white/5 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:bg-blue-500 transition-colors">
                     <i class="fas fa-bolt text-white"></i>
                 </div>
-                <span class="text-xl md:text-2xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Automation</span></span>
+                <span class="text-xl md:text-2xl font-black tracking-tighter uppercase italic text-white">Flux<span class="text-blue-400">Vision</span></span>
             </a>
-            
-            <div class="hidden lg:flex space-x-12 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
+
+            <div class="hidden lg:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
                 <a href="index.html" class="hover:text-white transition">Home</a>
                 <a href="how-it-works.html" class="hover:text-white transition">Magic</a>
                 <a href="pricing.html" class="hover:text-white transition">Pricing</a>
@@ -83,7 +84,7 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="connect.html" class="hidden sm:block btn-animate text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-blue-600/20">Connect Leads</a>
+                <a href="connect.html" class="hidden sm:block btn-animate text-white px-6 md:px-8 py-2 md:py-3 rounded-full text-[10px] font-bold uppercase tracking-widest">Connect Leads</a>
                 <button onclick="toggleMenu()" class="lg:hidden text-white text-xl p-2">
                     <i class="fas fa-bars" id="menu-icon"></i>
                 </button>
@@ -96,7 +97,7 @@
             <a href="pricing.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">Pricing</a>
             <a href="about.html" class="text-sm font-bold uppercase tracking-widest text-slate-400">About</a>
             <a href="privacy.html" class="text-sm font-bold uppercase tracking-widest text-white">Privacy</a>
-            <a href="connect.html" class="btn-animate text-center py-4 rounded-xl text-white font-bold text-xs tracking-widest">Connect Leads</a>
+            <a href="connect.html" class="bg-blue-600 text-center py-4 rounded-xl text-white font-bold uppercase text-xs tracking-widest">Connect Leads</a>
         </div>
     </nav>
 
@@ -107,14 +108,14 @@
                 <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6">
                     <i class="fas fa-user-shield text-blue-400 text-2xl"></i>
                 </div>
-                <h1 class="text-3xl md:text-4xl font-extrabold mb-6 tracking-tight leading-tight">Privacy & Data Governance</h1>
+                <h1 class="text-3xl md:text-4xl font-extrabold mb-6 tracking-tight leading-tight text-white">Privacy & Data Governance</h1>
                 <p class="text-slate-400 leading-relaxed mb-8 text-sm">Effective Date: March 31, 2026. Based in New Jersey, USA.</p>
                 
                 <div class="bg-blue-600/5 border-l-4 border-blue-500 p-6 rounded-r-2xl">
                     <h3 class="text-white font-bold text-sm uppercase tracking-widest mb-3 italic">Google API Limited Use Disclosure</h3>
                     <p class="text-sm text-slate-300 leading-relaxed italic">
                         "Flux Automation's use and transfer of information received from Google APIs to any other app will adhere to 
-                        <a href="https://developers.google.com/terms/api-services-user-data-policy#limited-use" class="text-blue-400 underline">Google API Services User Data Policy</a>, 
+                        <a href="https://developers.google.com/terms/api-services-user-data-policy#limited-use" class="text-blue-400 underline" target="_blank">Google API Services User Data Policy</a>, 
                         including the Limited Use requirements."
                     </p>
                 </div>
@@ -173,12 +174,17 @@
         </div>
     </main>
 
-    <footer class="py-12 border-t border-white/5 bg-black/20 text-center">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p class="text-[10px] text-slate-600 font-bold uppercase tracking-widest">© 2026 Flux Automation Inc. | New Jersey, USA</p>
-            <div class="flex gap-8">
-                <a href="about.html" class="text-[10px] text-slate-600 font-bold uppercase tracking-widest hover:text-white">About Us</a>
-                <a href="mailto:aiagentcustomersupport@gmail.com" class="text-[10px] text-slate-600 font-bold uppercase tracking-widest hover:text-white italic">Contact Support</a>
+    <footer class="py-20 border-t border-white/5 bg-black/20 text-center">
+        <div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="text-center md:text-left">
+                <div class="text-xl font-black text-white uppercase italic tracking-tighter">Flux<span class="text-blue-500">Automation</span></div>
+                <p class="text-[9px] md:text-[10px] text-slate-600 font-bold uppercase tracking-widest mt-2">© 2026 Flux Automation Inc.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-12 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+                <a href="privacy.html" class="text-white border-b border-blue-500">Privacy</a>
+                <a href="terms.html" class="hover:text-white transition">Terms</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <a href="mailto:aiagentcustomersupport@gmail.com" class="hover:text-white transition italic">Support</a>
             </div>
         </div>
     </footer>
@@ -190,7 +196,7 @@
             menu.classList.toggle('active');
             menu.classList.toggle('hidden');
             
-            if(icon.classList.contains('fa-bars')) {
+            if (icon.classList.contains('fa-bars')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
             } else {
