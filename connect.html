@@ -149,7 +149,6 @@
         // --- SUPABASE SETUP ---
         const _supabase = supabase.createClient('https://tdauhqzritjdnprcleqd.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkYXVocXpyaXRqZG5wcmNsZXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUwMDAxNDEsImV4cCI6MjA5MDU3NjE0MX0.V3QAM4bYbFpe6v-sIz6P4ueVALmwOG1h-X-SwpH1zpk');
 
-        // Check login status on page load and listen for changes
         window.onload = async () => {
             const { data: { session } } = await _supabase.auth.getSession();
             updateUI(session);
@@ -175,8 +174,13 @@
             const { data, error } = await _supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    // UPDATED: Hardcoded production URL to bypass "localhost" errors
-                    redirectTo: 'https://fluxautomation.site/connect.html'
+                    redirectTo: 'https://fluxautomation.site/connect.html',
+                    // UPDATED: Query parameters to ask for Gmail control permissions
+                    queryParams: {
+                        access_type: 'offline',
+                        prompt: 'consent',
+                        scope: 'https://www.googleapis.com/auth/gmail.settings.basic https://www.googleapis.com/auth/gmail.modify openid email profile'
+                    }
                 }
             });
             if (error) alert("Error: " + error.message);
@@ -191,7 +195,6 @@
             const { data: { session } } = await _supabase.auth.getSession();
             if (!session) return alert("Please sign in first.");
             const token = session.access_token;
-            // Securely redirect to your backend with the JWT token
             window.location.href = `https://connect.fluxautomation.site/authorize?access_token=${token}`;
         }
 
