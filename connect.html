@@ -149,10 +149,14 @@
         // --- SUPABASE SETUP ---
         const _supabase = supabase.createClient('https://tdauhqzritjdnprcleqd.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkYXVocXpyaXRqZG5wcmNsZXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUwMDAxNDEsImV4cCI6MjA5MDU3NjE0MX0.V3QAM4bYbFpe6v-sIz6P4ueVALmwOG1h-X-SwpH1zpk');
 
-        // Check login status on page load
+        // Check login status on page load and listen for changes
         window.onload = async () => {
             const { data: { session } } = await _supabase.auth.getSession();
             updateUI(session);
+
+            _supabase.auth.onAuthStateChange((event, session) => {
+                updateUI(session);
+            });
         };
 
         function updateUI(session) {
@@ -170,11 +174,17 @@
         async function login() {
             const { data, error } = await _supabase.auth.signInWithOAuth({
                 provider: 'google',
+                options: {
+                    // Redirect back to this page after Google Auth
+                    redirectTo: window.location.origin + '/connect.html'
+                }
             });
+            if (error) alert("Error: " + error.message);
         }
 
         async function logout() {
             await _supabase.auth.signOut();
+            // Force reload to clean UI
             location.reload();
         }
 
@@ -182,6 +192,7 @@
             const { data: { session } } = await _supabase.auth.getSession();
             if (!session) return alert("Please sign in first.");
             const token = session.access_token;
+            // Securely redirect to your backend with the JWT token
             window.location.href = `https://connect.fluxautomation.site/authorize?access_token=${token}`;
         }
 
@@ -190,8 +201,13 @@
             const icon = document.getElementById('menu-icon');
             menu.classList.toggle('active');
             menu.classList.toggle('hidden');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         }
     </script>
 </body>
